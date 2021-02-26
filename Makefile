@@ -4,7 +4,7 @@
 build:
 	go build ./cmd/api/main.go
 
-run: build
+run:
 	docker-compose up --build
 
 test:

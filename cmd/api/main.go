@@ -1,7 +1,9 @@
 package main
 
-import "github.com/kalyasik/blog_backend/internal/server"
+import (
+	"github.com/kalyasik/blog_backend/internal/app"
+)
 
 func main() {
-	server.Run("configs", "config")
+	app.Run("configs", "config")
 }
