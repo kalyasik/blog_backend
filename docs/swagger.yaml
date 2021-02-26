@@ -1,0 +1,175 @@
+definitions:
+  models.PostInput:
+    properties:
+      body:
+        type: string
+      title:
+        type: string
+      user_id:
+        type: integer
+    type: object
+  v1.ErrorMessage:
+    properties:
+      message:
+        type: string
+      status:
+        type: integer
+    type: object
+  v1.SuccessMesageData:
+    properties:
+      data:
+        type: object
+      status:
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/posts:
+    get:
+      consumes:
+      - application/json
+      description: returning all post
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1.SuccessMesageData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+        "404":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+      summary: Get all posts
+      tags:
+      - Posts
+    post:
+      consumes:
+      - application/json
+      description: created new post
+      parameters:
+      - description: Enter post data to create a new post
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.PostInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1.SuccessMesageData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+        "404":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+      summary: Create new post
+      tags:
+      - Posts
+  /api/v1/posts/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: deleted post data
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1.SuccessMesageData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+        "404":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+      summary: Delete post by ID
+      tags:
+      - Posts
+    put:
+      consumes:
+      - application/json
+      description: updated post data
+      parameters:
+      - description: Post ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Enter post data to update a post
+        in: body
+        name: data
+        required: true
+        schema:
+          $ref: '#/definitions/models.PostInput'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/v1.SuccessMesageData'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+        "404":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/v1.ErrorMessage'
+      summary: Update post by ID
+      tags:
+      - Posts
+swagger: "2.0"

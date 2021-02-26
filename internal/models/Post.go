@@ -6,3 +6,9 @@ type Posts struct {
 	Body   string `gorm:"not null" json:"body" validate:"required,min=5"`
 	UserID int64  `gorm:"not null" json:"user_id"`
 }
+
+type PostInput struct {
+	Title  string `json:"title"`
+	Body   string `json:"body"`
+	UserID int64  `json:"user_id"`
+}
